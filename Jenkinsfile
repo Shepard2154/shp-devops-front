@@ -2,7 +2,7 @@ pipeline {
     agent any;
 
     environment {
-        PROJECT_PATH = '/var/www/devops'
+        PROJECT_PATH = '/var/www/burnaev'
     }
 
     stages {
