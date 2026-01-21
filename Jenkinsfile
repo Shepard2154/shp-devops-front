@@ -2,8 +2,8 @@ pipeline {
     agent any;
 
     environment {
-        PROJECT_PATH = '/var/www/burnaev';
-        CONF_PATH = '/etc/nginx/sites-available/burnaev_front.conf';
+        PROJECT_PATH = '/var/www/burnaev'
+        CONF_PATH = '/etc/nginx/sites-available/burnaev_front.conf'
     }
 
     stages {
