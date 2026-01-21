@@ -5,7 +5,6 @@ pipeline {
         PROJECT_PATH = '/var/www/burnaev'
         CONF_PATH = '/etc/nginx/sites-available/burnaev_front.conf'
         CONF_NAME = 'burnaev_front.conf'
-        NGINX_PORT = '80'
     }
 
     stages {
@@ -20,13 +19,18 @@ pipeline {
                 sh 'npm run build_prod';
                 sh 'cp -r dist/ ${PROJECT_PATH}';
                 sh """echo "server {
-                        listen ${NGINX_PORT};
-                        server_name mshptop.ru;
+                        listen 443 ssl;
+                        server_name burnaev.mshptop.ru;
 
                         location / {
                             root ${PROJECT_PATH};
                             try_files \\\$uri /index.html;
                         }
+
+                        ssl_certificate /etc/letsencrypt/live/burnaev.mshptop.ru/fullchain.pem;
+                        ssl_certificate_key /etc/letsencrypt/live/burnaev.mshptop.ru/privkey.pem;
+                        include /etc/letsencrypt/options-ssl-nginx.conf;
+                        ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
                     }" > ${CONF_PATH}
                 """;
                 sh  "ln -sf ${CONF_PATH} /etc/nginx/sites-enabled/${CONF_NAME}";
