@@ -33,7 +33,7 @@ pipeline {
                         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
                     }" > ${CONF_PATH}
                 """;
-                sh  "ln -sf /etc/nginx/sites-available/kopeykina.mshptop.ru.conf /etc/nginx/sites-enabled/";
+                sh  "ln -sf /etc/nginx/sites-available/${CONF_PATH} /etc/nginx/sites-enabled/";
             }
         }
 
