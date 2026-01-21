@@ -24,7 +24,7 @@ pipeline {
 
                         location / {
                             root ${PROJECT_PATH};
-                            try_files $uri /index.html;
+                            try_files \\\$uri /index.html;
                         }
 
                         ssl_certificate /etc/letsencrypt/live/burnaev.mshptop.ru/fullchain.pem;
