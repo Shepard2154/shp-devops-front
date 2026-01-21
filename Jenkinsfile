@@ -34,7 +34,8 @@ pipeline {
                     }" > ${CONF_PATH}
                 """;
                 sh  "ln -sf ${CONF_PATH} /etc/nginx/sites-enabled/${CONF_NAME}";
-                sh "nginx -s reload 2>/dev/null || true";
+                sh "nginx -t";
+                sh "nginx -s reload";
             }
         }
 
