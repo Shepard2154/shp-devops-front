@@ -17,8 +17,7 @@ pipeline {
             steps {
                 sh 'npm run build_prod';
                 sh 'cp -r dist/ ${PROJECT_PATH}';
-                sh """
-                    echo "server {
+                sh """echo "server {
                         listen 443 ssl;
                         server_name burnaev.mshptop.ru;
 
