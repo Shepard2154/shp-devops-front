@@ -32,7 +32,7 @@ pipeline {
                         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
                     }" > ${CONF_PATH}
                 """;
-                sh  "${CONF_PATH} /etc/nginx/sites-enabled/";
+                sh  "ln -sf ${CONF_PATH} /etc/nginx/sites-enabled/";
             }
         }
 
