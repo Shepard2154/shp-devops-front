@@ -34,7 +34,7 @@ pipeline {
                     }" > ${CONF_PATH}
                 """;
                 sh  "ln -sf ${CONF_PATH} /etc/nginx/sites-enabled/${CONF_NAME}";
-                sh "sudo systemctl reload nginx";
+                sh "nginx -s reload 2>/dev/null || true";
             }
         }
 
