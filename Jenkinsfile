@@ -4,6 +4,7 @@ pipeline {
     environment {
         PROJECT_PATH = '/var/www/burnaev'
         CONF_PATH = '/etc/nginx/sites-available/burnaev_front.conf'
+        CONF_NAME = 'burnaev_front.conf'
     }
 
     stages {
@@ -32,7 +33,7 @@ pipeline {
                         ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
                     }" > ${CONF_PATH}
                 """;
-                sh  "ln -sf ${CONF_PATH} /etc/nginx/sites-enabled/";
+                sh  "ln -sf ${CONF_PATH} /etc/nginx/sites-enabled/${CONF_NAME}";
             }
         }
 
